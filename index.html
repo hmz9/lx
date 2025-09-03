@@ -1,0 +1,622 @@
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   LuxJuice &amp; Cola - Premium Refreshments
+  </title>
+  <meta content="LuxJuice &amp; Cola - Experience the pinnacle of luxury refreshment with our premium juices and colas. Discover our story, products, recipes, and connect with us." name="description"/>
+  <meta content="luxury juice, premium cola, cocktail recipes, lifestyle, refreshing drinks, luxury beverages" name="keywords"/>
+  <meta content="LuxJuice &amp; Cola" name="author"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&amp;family=Montserrat:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <style>
+   /* Custom fonts and luxury color palette */
+    :root {
+      --color-gold: #bfa06a;
+      --color-dark: #1a1a1a;
+      --color-light: #f9f7f1;
+      --color-accent: #d4af37;
+      --color-muted: #6b6b6b;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--color-light);
+      color: var(--color-dark);
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      color: var(--color-gold);
+    }
+    /* Scrollbar for luxury feel */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-light);
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--color-gold);
+      border-radius: 10px;
+      border: 2px solid var(--color-light);
+    }
+    /* Cinematic hero text animation */
+    .hero-text {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 0.15em solid var(--color-gold);
+      animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      50% { border-color: transparent }
+      100% { border-color: var(--color-gold) }
+    }
+    /* Floating particles container */
+    #particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Navigation active link highlight */
+    nav a.active {
+      color: var(--color-accent);
+      font-weight: 700;
+      border-bottom: 2px solid var(--color-accent);
+    }
+    /* Product card hover effect */
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px rgba(181, 160, 106, 0.3);
+      z-index: 10;
+    }
+    /* Blog card hover */
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 25px rgba(181, 160, 106, 0.25);
+      z-index: 10;
+    }
+    /* Contact form focus */
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 8px var(--color-accent);
+    }
+    /* Smooth scroll offset for fixed nav */
+    section {
+      scroll-margin-top: 80px;
+    }
+    /* Responsive typography */
+    @media (min-width: 768px) {
+      h1.hero-text {
+        font-size: 4rem;
+      }
+    }
+  </style>
+ </head>
+ <body class="relative bg-gradient-to-b from-[#f9f7f1] to-[#f0e9d2] text-gray-900">
+  <!-- Floating particles canvas -->
+  <canvas aria-hidden="true" id="particles">
+  </canvas>
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 w-full bg-white bg-opacity-90 backdrop-blur-md z-50 shadow-md">
+   <nav aria-label="Primary Navigation" class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:py-5">
+    <a aria-label="LuxJuice &amp; Cola Home" class="text-2xl font-playfair font-bold text-gold-600 text-[color:var(--color-gold)] hover:text-[color:var(--color-accent)] transition" href="#home">
+     LuxJuice &amp; Cola
+    </a>
+    <ul class="hidden md:flex space-x-8 font-semibold text-gray-700">
+     <li>
+      <a aria-current="page" class="nav-link hover:text-[color:var(--color-accent)] transition" href="#home">
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="nav-link hover:text-[color:var(--color-accent)] transition" href="#about">
+       About
+      </a>
+     </li>
+     <li>
+      <a class="nav-link hover:text-[color:var(--color-accent)] transition" href="#products">
+       Products
+      </a>
+     </li>
+     <li>
+      <a class="nav-link hover:text-[color:var(--color-accent)] transition" href="#blog">
+       Journal
+      </a>
+     </li>
+     <li>
+      <a class="nav-link hover:text-[color:var(--color-accent)] transition" href="#contact">
+       Contact
+      </a>
+     </li>
+    </ul>
+    <button aria-label="Toggle menu" class="md:hidden text-gray-700 hover:text-[color:var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-accent)]" id="mobile-menu-button">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </nav>
+   <div class="hidden md:hidden bg-white bg-opacity-95 backdrop-blur-md shadow-md" id="mobile-menu">
+    <ul class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
+     <li>
+      <a class="nav-link-mobile hover:text-[color:var(--color-accent)] transition" href="#home">
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="nav-link-mobile hover:text-[color:var(--color-accent)] transition" href="#about">
+       About
+      </a>
+     </li>
+     <li>
+      <a class="nav-link-mobile hover:text-[color:var(--color-accent)] transition" href="#products">
+       Products
+      </a>
+     </li>
+     <li>
+      <a class="nav-link-mobile hover:text-[color:var(--color-accent)] transition" href="#blog">
+       Journal
+      </a>
+     </li>
+     <li>
+      <a class="nav-link-mobile hover:text-[color:var(--color-accent)] transition" href="#contact">
+       Contact
+      </a>
+     </li>
+    </ul>
+   </div>
+  </header>
+  <main class="pt-20 max-w-7xl mx-auto px-6">
+   <!-- Hero Section -->
+   <section aria-label="Homepage hero section" class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-0" id="home">
+    <h1 aria-atomic="true" aria-live="polite" class="hero-text text-4xl md:text-6xl font-playfair font-bold tracking-wide max-w-4xl leading-tight mb-6">
+     Experience the Essence of Luxury in Every Sip
+    </h1>
+    <p class="text-lg md:text-xl max-w-3xl text-gray-700 mb-10">
+     LuxJuice &amp; Cola - Where premium refreshment meets timeless elegance.
+    </p>
+    <a aria-label="Explore our products" class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-400 text-dark font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-yellow-300" href="#products">
+     Explore Our Products
+    </a>
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl w-full">
+     <div class="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer">
+      <img alt="LuxJuice Tropical Delight bottle with golden label and tropical fruits background" class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105" height="500" src="https://storage.googleapis.com/a1aa/image/962af3fa-4270-4eb3-cb21-2189bbf3dbf8.jpg" width="400"/>
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+       <h3 class="text-gold-600 font-playfair text-xl">
+        Tropical Delight
+       </h3>
+       <p class="text-sm text-gray-200">
+        A luscious blend of exotic fruits for a refreshing escape.
+       </p>
+      </div>
+     </div>
+     <div class="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer">
+      <img alt="LuxCola Signature bottle with elegant gold label and dark cola bubbles background" class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105" height="500" src="https://storage.googleapis.com/a1aa/image/46618a40-8599-4cc1-4f2f-3e745ab8310a.jpg" width="400"/>
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+       <h3 class="text-gold-600 font-playfair text-xl">
+        Signature LuxCola
+       </h3>
+       <p class="text-sm text-gray-200">
+        Classic cola with a refined twist and premium ingredients.
+       </p>
+      </div>
+     </div>
+     <div class="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer">
+      <img alt="LuxJuice Berry Essence bottle with elegant gold accents and fresh berries background" class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105" height="500" src="https://storage.googleapis.com/a1aa/image/25bbf3bf-cd89-416f-b4ae-5f7aa89f6c30.jpg" width="400"/>
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+       <h3 class="text-gold-600 font-playfair text-xl">
+        Berry Essence
+       </h3>
+       <p class="text-sm text-gray-200">
+        Rich berry flavors crafted for the discerning palate.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- About Section -->
+   <section aria-label="About LuxJuice &amp; Cola" class="py-20 max-w-6xl mx-auto" id="about">
+    <h2 class="text-4xl md:text-5xl font-playfair font-bold text-center mb-12">
+     Our Story &amp; Values
+    </h2>
+    <div class="flex flex-col md:flex-row gap-12 items-center">
+     <div class="md:w-1/2 space-y-6 text-gray-800 text-lg leading-relaxed">
+      <p>
+       Founded on a passion for excellence, LuxJuice &amp; Cola embodies the art of crafting beverages that transcend ordinary refreshment. Our journey began with a vision to blend nature’s finest ingredients with sophisticated craftsmanship, delivering a taste that is both indulgent and invigorating.
+      </p>
+      <p>
+       Every bottle is a testament to our commitment to quality, sustainability, and innovation. We source the freshest fruits and purest ingredients, ensuring each sip is a luxurious experience that delights the senses and nourishes the soul.
+      </p>
+      <p>
+       Our values are rooted in authenticity, elegance, and respect for tradition, while embracing modern techniques to create beverages that stand apart in flavor and style.
+      </p>
+     </div>
+     <div class="md:w-1/2 grid grid-cols-2 gap-6">
+      <img alt="LuxJuice orchard harvest bathed in golden sunlight with ripe fruits on trees" class="rounded-xl shadow-lg object-cover w-full h-48 md:h-60" height="300" src="https://storage.googleapis.com/a1aa/image/88837264-3253-407e-ba50-04655a0461a3.jpg" width="400"/>
+      <img alt="LuxCola crafting process showing artisan hands bottling cola with gold accents" class="rounded-xl shadow-lg object-cover w-full h-48 md:h-60" height="300" src="https://storage.googleapis.com/a1aa/image/83b4d4d3-1385-476d-ad0b-90f693d63553.jpg" width="400"/>
+      <img alt="Closeup of premium fresh fruits used in LuxJuice with gold highlights" class="rounded-xl shadow-lg object-cover w-full h-48 md:h-60" height="300" src="https://storage.googleapis.com/a1aa/image/aab9d662-3e23-4f44-810f-3dfaac54103e.jpg" width="400"/>
+      <img alt="LuxCola elegant bottle display in a luxury setting with gold and black tones" class="rounded-xl shadow-lg object-cover w-full h-48 md:h-60" height="300" src="https://storage.googleapis.com/a1aa/image/1f73634c-0005-43c8-ab24-c449fde65cbc.jpg" width="400"/>
+     </div>
+    </div>
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+     <div>
+      <i class="fas fa-seedling text-[color:var(--color-gold)] text-5xl mb-4">
+      </i>
+      <h3 class="font-playfair text-2xl mb-2">
+       Sustainability
+      </h3>
+      <p class="text-gray-700 max-w-xs mx-auto">
+       We prioritize eco-friendly sourcing and packaging to protect our planet.
+      </p>
+     </div>
+     <div>
+      <i class="fas fa-award text-[color:var(--color-gold)] text-5xl mb-4">
+      </i>
+      <h3 class="font-playfair text-2xl mb-2">
+       Quality
+      </h3>
+      <p class="text-gray-700 max-w-xs mx-auto">
+       Only the finest ingredients and meticulous craftsmanship go into every bottle.
+      </p>
+     </div>
+     <div>
+      <i class="fas fa-heart text-[color:var(--color-gold)] text-5xl mb-4">
+      </i>
+      <h3 class="font-playfair text-2xl mb-2">
+       Passion
+      </h3>
+      <p class="text-gray-700 max-w-xs mx-auto">
+       Our love for luxury beverages drives us to innovate and inspire.
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Products Section -->
+   <section aria-label="LuxJuice &amp; Cola Products" class="py-20 max-w-7xl mx-auto" id="products">
+    <h2 class="text-4xl md:text-5xl font-playfair font-bold text-center mb-12">
+     Our Exclusive Collection
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="products-grid">
+     <!-- Products generated by JS -->
+    </div>
+   </section>
+   <!-- Blog/Journal Section -->
+   <section aria-label="LuxJuice &amp; Cola Journal and Recipes" class="py-20 max-w-7xl mx-auto" id="blog">
+    <h2 class="text-4xl md:text-5xl font-playfair font-bold text-center mb-12">
+     Journal &amp; Cocktail Recipes
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="blog-grid">
+     <!-- Blog posts generated by JS -->
+    </div>
+   </section>
+   <!-- Contact Section -->
+   <section aria-label="Contact LuxJuice &amp; Cola" class="py-20 max-w-4xl mx-auto" id="contact">
+    <h2 class="text-4xl md:text-5xl font-playfair font-bold text-center mb-12">
+     Get in Touch
+    </h2>
+    <div class="flex flex-col md:flex-row gap-12">
+     <form class="flex-1 bg-white bg-opacity-90 rounded-xl shadow-lg p-8 space-y-6" id="contact-form" novalidate="">
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="name">
+        Name
+       </label>
+       <input class="w-full border border-gray-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-[color:var(--color-accent)]" id="name" name="name" placeholder="Your full name" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="email">
+        Email
+       </label>
+       <input class="w-full border border-gray-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-[color:var(--color-accent)]" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+      </div>
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="message">
+        Message
+       </label>
+       <textarea class="w-full border border-gray-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-[color:var(--color-accent)]" id="message" name="message" placeholder="Write your message here..." required="" rows="5"></textarea>
+      </div>
+      <button class="bg-gradient-to-r from-yellow-500 to-yellow-400 text-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-yellow-300" type="submit">
+       Send Message
+      </button>
+      <p aria-live="polite" class="text-sm mt-2 text-green-600 font-semibold hidden" id="form-status" role="alert">
+      </p>
+     </form>
+     <div class="flex-1 space-y-8">
+      <div class="rounded-xl overflow-hidden shadow-lg">
+       <img alt="Map showing LuxJuice &amp; Cola store location in a luxury style with gold and cream colors" class="w-full h-64 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/ae5ca979-c954-40bb-0ffd-e188321a08fc.jpg" width="600"/>
+      </div>
+      <div class="text-center space-y-4">
+       <h3 class="font-playfair text-2xl text-[color:var(--color-gold)]">
+        Connect with Us
+       </h3>
+       <div class="flex justify-center space-x-8 text-[color:var(--color-gold)] text-3xl">
+        <a aria-label="Facebook" href="https://www.facebook.com/luxjuicecola" rel="noopener" target="_blank">
+         <i class="fab fa-facebook-square hover:text-[color:var(--color-accent)] transition">
+         </i>
+        </a>
+        <a aria-label="Instagram" href="https://www.instagram.com/luxjuicecola" rel="noopener" target="_blank">
+         <i class="fab fa-instagram-square hover:text-[color:var(--color-accent)] transition">
+         </i>
+        </a>
+        <a aria-label="Twitter" href="https://twitter.com/luxjuicecola" rel="noopener" target="_blank">
+         <i class="fab fa-twitter-square hover:text-[color:var(--color-accent)] transition">
+         </i>
+        </a>
+        <a aria-label="Email LuxJuice &amp; Cola" href="mailto:contact@luxjuicecola.com">
+         <i class="fas fa-envelope-square hover:text-[color:var(--color-accent)] transition">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer aria-label="Footer" class="bg-[color:var(--color-dark)] text-[color:var(--color-light)] text-center py-8 mt-20 select-none">
+   <p class="text-sm">
+    © 2024 LuxJuice &amp; Cola. All rights reserved.
+   </p>
+  </footer>
+  <script>
+   // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll and active nav link highlight
+    const navLinks = document.querySelectorAll('nav a.nav-link');
+    const navLinksMobile = document.querySelectorAll('#mobile-menu a.nav-link-mobile');
+    const sections = ['home', 'about', 'products', 'blog', 'contact'].map(id => document.getElementById(id));
+
+    function setActiveLink() {
+      let scrollPos = window.scrollY + 100;
+      let current = 'home';
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPos) {
+          current = section.id;
+        }
+      }
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+      navLinksMobile.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    // Close mobile menu on link click
+    navLinksMobile.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Generate 50 products with realistic names, descriptions, prices, images
+    const productsGrid = document.getElementById('products-grid');
+
+    const productAdjectives = ['Golden', 'Velvet', 'Crystal', 'Royal', 'Silken', 'Luminous', 'Radiant', 'Opulent', 'Noble', 'Divine', 'Celestial', 'Elysian', 'Majestic', 'Sublime', 'Exquisite'];
+    const productFlavors = ['Tropical', 'Berry', 'Citrus', 'Vanilla', 'Caramel', 'Spiced', 'Mint', 'Lavender', 'Rose', 'Honey', 'Almond', 'Coconut', 'Pineapple', 'Peach', 'Cherry'];
+    const productTypes = ['Juice', 'Cola', 'Elixir', 'Essence', 'Brew', 'Nectar', 'Fizz', 'Blend', 'Syrup', 'Tonic'];
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateProductName() {
+      const adj = productAdjectives[getRandomInt(0, productAdjectives.length - 1)];
+      const flavor = productFlavors[getRandomInt(0, productFlavors.length - 1)];
+      const type = productTypes[getRandomInt(0, productTypes.length - 1)];
+      return `${adj} ${flavor} ${type}`;
+    }
+
+    function generateDescription(name) {
+      const descs = [
+        `Experience the unmatched taste of ${name}, crafted with the finest ingredients.`,
+        `Indulge in the luxurious flavor profile of ${name}, a true masterpiece.`,
+        `${name} offers a refreshing and elegant beverage experience.`,
+        `Savor the rich and smooth notes of ${name}, designed for connoisseurs.`,
+        `A premium blend that captures the essence of sophistication: ${name}.`
+      ];
+      return descs[getRandomInt(0, descs.length - 1)];
+    }
+
+    function generatePriceDH() {
+      return (getRandomInt(50, 150) + 0.99).toFixed(2);
+    }
+
+    function dhToUsd(dh) {
+      return (dh * 0.10).toFixed(2);
+    }
+
+    function generateImageUrl(name, index) {
+      // Compose a text for the image with product name and gold theme
+      const text = encodeURIComponent(name);
+      // Use placehold.co with gold and cream colors, 400x500
+      return `https://placehold.co/400x500/png?text=${text}&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a&idx=${index}`;
+    }
+
+    for (let i = 1; i <= 50; i++) {
+      const name = generateProductName();
+      const description = generateDescription(name);
+      const priceDH = generatePriceDH();
+      const priceUSD = dhToUsd(priceDH);
+      const imageUrl = generateImageUrl(name, i);
+
+      const productCard = document.createElement('article');
+      productCard.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden transform transition duration-300 cursor-pointer hover:shadow-xl hover:-translate-y-2';
+      productCard.setAttribute('tabindex', '0');
+      productCard.setAttribute('aria-label', `${name}, priced at ${priceDH} dirhams or ${priceUSD} US dollars`);
+
+      productCard.innerHTML = `
+        <img src="${imageUrl}" alt="Luxurious bottle of ${name} with gold and cream elegant design" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="font-playfair text-xl text-[color:var(--color-gold)] mb-2">${name}</h3>
+          <p class="text-gray-700 text-sm mb-4">${description}</p>
+          <div class="flex justify-between items-center font-semibold text-gray-900">
+            <span class="text-lg">${priceDH} DH</span>
+            <span class="text-sm text-gray-500">${priceUSD} USD</span>
+          </div>
+        </div>
+      `;
+      productsGrid.appendChild(productCard);
+    }
+
+    // Blog/Journal posts data
+    const blogGrid = document.getElementById('blog-grid');
+    const blogPosts = [
+      {
+        title: "The Art of the Perfect LuxJuice Cocktail",
+        summary: "Discover how to craft exquisite cocktails using our premium juices and colas, elevating your gatherings to new heights.",
+        image: "https://placehold.co/600x400/png?text=LuxJuice+Cocktail+Art+with+Gold+Accents&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a",
+        alt: "LuxJuice cocktail in a crystal glass with gold accents and fresh fruit garnish"
+      },
+      {
+        title: "Lifestyle Tips for the Discerning Beverage Lover",
+        summary: "Embrace a lifestyle of elegance and refinement with our curated tips for enjoying luxury beverages and hosting memorable events.",
+        image: "https://placehold.co/600x400/png?text=LuxJuice+Lifestyle+Elegant+Setting&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a",
+        alt: "Elegant lifestyle setting with LuxJuice bottles, candles, and gold decor"
+      },
+      {
+        title: "Seasonal Ingredients: Freshness in Every Bottle",
+        summary: "Learn about the seasonal fruits and ingredients that make our juices and colas uniquely fresh and flavorful throughout the year.",
+        image: "https://placehold.co/600x400/png?text=LuxJuice+Seasonal+Ingredients+Fresh+Fruits&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a",
+        alt: "Closeup of fresh seasonal fruits used in LuxJuice products with golden light"
+      },
+      {
+        title: "Mixology Secrets: Creating LuxCola Signature Drinks",
+        summary: "Unlock the secrets behind our signature LuxCola drinks and learn how to mix them perfectly at home.",
+        image: "https://placehold.co/600x400/png?text=LuxCola+Mixology+Signature+Drinks&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a",
+        alt: "LuxCola signature drink in a stylish glass with gold stirrer and ice cubes"
+      },
+      {
+        title: "Health Benefits of Natural Ingredients in Our Juices",
+        summary: "Explore the natural health benefits of the ingredients we use, promoting wellness alongside luxury refreshment.",
+        image: "https://placehold.co/600x400/png?text=LuxJuice+Natural+Ingredients+Health+Benefits&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a",
+        alt: "Assortment of natural fruits and herbs used in LuxJuice with golden highlights"
+      },
+      {
+        title: "Hosting a Luxurious Party with LuxJuice & Cola",
+        summary: "Tips and ideas for hosting an unforgettable party featuring our premium beverages and elegant presentation.",
+        image: "https://placehold.co/600x400/png?text=LuxJuice+Luxury+Party+Setup&font=playfair+display&font-size=28&bg=fff8e1&fg=bfa06a",
+        alt: "Luxurious party setup with LuxJuice bottles, gold decorations, and ambient lighting"
+      }
+    ];
+
+    blogPosts.forEach(post => {
+      const blogCard = document.createElement('article');
+      blogCard.className = 'blog-card bg-white rounded-xl shadow-md overflow-hidden transform transition duration-300 cursor-pointer hover:shadow-xl hover:-translate-y-1';
+      blogCard.setAttribute('tabindex', '0');
+      blogCard.setAttribute('aria-label', post.title);
+
+      blogCard.innerHTML = `
+        <img src="${post.image}" alt="${post.alt}" class="w-full h-48 object-cover" />
+        <div class="p-6">
+          <h3 class="font-playfair text-2xl text-[color:var(--color-gold)] mb-3">${post.title}</h3>
+          <p class="text-gray-700 text-base">${post.summary}</p>
+        </div>
+      `;
+      blogGrid.appendChild(blogCard);
+    });
+
+    // Contact form submission simulation
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      formStatus.textContent = '';
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        formStatus.textContent = 'Thank you for reaching out! We will get back to you shortly.';
+        formStatus.classList.remove('hidden');
+        contactForm.reset();
+      }, 2000);
+    });
+
+    // Floating particles effect
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray = [];
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = 1 + Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = 0.1 + Math.random() * 0.15;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(191, 160, 106, ${this.opacity})`;
+        ctx.shadowColor = 'rgba(191, 160, 106, 0.7)';
+        ctx.shadowBlur = 4;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      const count = Math.floor((window.innerWidth * window.innerHeight) / 8000);
+      for (let i = 0; i < count; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initParticles();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animateParticles();
+  </script>
+ </body>
+</html>
